@@ -3,13 +3,13 @@
     <pesquisar-vaga />
     <div class="row mt-5">
       <div class="col-4">
-        <indicador-vaga titulo="Vagas abertas" indicador="25" />
+        <indicador-vaga titulo="Vagas abertas" indicador="25" bg="bg-dark" color="text-white" />
       </div>
       <div class="col-4">
-        <indicador-vaga titulo="Profissionais cadastrados" indicador="125" />
+        <indicador-vaga titulo="Profissionais cadastrados" indicador="125" bg="bg-dark" color="text-white" />
       </div>
       <div class="col-4">
-        <indicador-vaga titulo="Visitantes online" indicador="15" />
+        <indicador-vaga titulo="Visitantes online" indicador="15" bg="bg-light" color="text-dark" />
       </div>
     </div>
   </div>
