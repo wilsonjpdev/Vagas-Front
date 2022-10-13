@@ -17,14 +17,27 @@
 
 <script>
 export default {
-    props: [
-      'titulo',
-      'descricao',
-      'salario',
-      'modalidade',
-      'tipo',
-      'publicacao'
-    ]
+    props: {
+      titulo : {
+        type: String,
+        required: true
+      },
+      descricao : {
+        type: String,
+        default: 'O contratante não especificou o valor padrão para essa vaga'
+      },
+      salario : {
+      },
+      modalidade : {
+        type: String,
+      },
+      tipo : {
+        type: String,
+      },
+      publicacao : {
+        type: String,
+      }
+    }
 }
 </script>
 

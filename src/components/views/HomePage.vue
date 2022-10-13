@@ -6,15 +6,9 @@
       </div>
     </div>
 
-    <div class="row mt-5" v-for="(vaga, index) in vagas" :key="index">
+    <div class="row mt-2" v-for="(vaga, index) in vagas" :key="index">
       <div class="col">
-        <vaga-emprego 
-          :titulo="vaga.titulo" 
-          :descricao="vaga.descricao" 
-          :salario="vaga.salario" 
-          :modalidade="vaga.modalidade" 
-          :tipo="vaga.tipo" 
-          :publicacao="vaga.publicacao" />
+        <vaga-emprego v-bind="vaga"/>
       </div>
     </div>
 
