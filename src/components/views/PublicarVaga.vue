@@ -74,25 +74,59 @@ export default {
       let tempoDecorrido = Date.now();
       let dataAtual = new Date(tempoDecorrido);
 
-      let vagas = JSON.parse(localStorage.getItem('vagas'))
+      let vagas = JSON.parse(localStorage.getItem("vagas"));
 
-      if(!vagas) {
-        vagas = []        
+      if (!vagas) {
+        vagas = [];
       }
 
       vagas.push({
-            titulo: this.titulo,
-            descricao: this.descricao,
-            salario: this.salario,
-            modalidade: this.modalidade,
-            tipo: this.tipo,
-            publicacao: dataAtual.toISOString()
-          })
-      
-      localStorage.setItem('vagas', JSON.stringify(vagas))
-      
-    }
-  }
+        titulo: this.titulo,
+        descricao: this.descricao,
+        salario: this.salario,
+        modalidade: this.modalidade,
+        tipo: this.tipo,
+        publicacao: dataAtual.toISOString(),
+      });
+
+      if (this.valdarFormulario()) {
+        localStorage.setItem("vagas", JSON.stringify(vagas));
+        this.emitter.emit("alerta", {
+          tipo: 'sucesso',
+          titulo: `A vaga ${this.titulo} foi cadastrada com sucesso!`,
+          descricao:
+            "Parabéns, a vaga foi cadastrada e poderá ser consultada por milhares de profissionais na nossa plataforma.",
+        });
+
+        this.resetarFormularioCadastrio();
+      }else {
+        this.emitter.emit("alerta", {
+          tipo: 'erro',
+          titulo: 'Opsss... Não foi possivel realizar o cadastro',
+          descricao:
+            "Parece que você esqvaldarFormularioueceu algum campo em branco. Faça o ajuste e tente novamente.",
+        });
+      }
+    },
+    valdarFormulario() {
+      let valido = true;
+
+      if (this.titulo === "") valido = false;
+      if (this.descricao === "") valido = false;
+      if (this.salario === "") valido = false;
+      if (this.modalidade === "") valido = false;
+      if (this.tipo === "") valido = false;
+
+      return valido;
+    },
+    resetarFormularioCadastrio() {
+      (this.titulo = ""),
+        (this.descricao = ""),
+        (this.salario = ""),
+        (this.modalidade = ""),
+        (this.tipo = "");
+    },
+  },
 };
 </script>
     
