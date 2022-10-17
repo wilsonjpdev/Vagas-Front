@@ -1,9 +1,8 @@
 <template>
   <div>
      <h1>Componente Conteudo</h1>
-     <button @click="conteudo = 'home-page'">Home</button>
-     <button @click="conteudo = 'publicar-vaga'">Publicar Vaga</button>
      <keep-alive>
+      
       <component :is="conteudo" />
     </keep-alive>
   </div>
@@ -18,9 +17,13 @@
       HomePage,
       PublicarVaga
     },
-    data: () => ({
-      conteudo: 'home-page'
-    })
+    props: {
+      conteudo: {
+        type: String,
+        required: true
+      }
+    },
+
   }
 </script>
   
