@@ -7,14 +7,14 @@
             <div class="col">
               <div class="form-group">
                 <label for="titulo-vaga">Título da Vaga</label>
-                <input type="text" name="titulo-vaga" id="titulo-vaga" class="form-control" placeholder="Pesquise por palavras chaves. Ex: php, pleno, analista">
+                <input v-model="titulo" type="text" name="titulo-vaga" id="titulo-vaga" class="form-control" placeholder="Pesquise por palavras chaves. Ex: php, pleno, analista">
                 <small class="form-text text-muted">Informe palavras relacionadas com o titulo da vaga que você procura</small>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col">
-              <button class="btn btn-outline-dark mt-2">Buscar</button>
+              <button class="btn btn-outline-dark mt-2" @click="pesquisarVaga()">Buscar</button>
             </div>
           </div>
         </div>
@@ -24,7 +24,14 @@
 
 <script>
 export default {
-
+  data: () => ({
+    titulo: ''
+  }),
+  methods: {    
+    pesquisarVaga() {
+      this.emitter.emit('filtrarVagas', {titulo: this.titulo})
+    }
+  }
 }
 </script>
 
